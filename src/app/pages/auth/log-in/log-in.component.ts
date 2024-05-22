@@ -13,7 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { UsersService } from '../../../shared/services/users.service';
+import { IUsers } from '../../../shared/interfaces/users.interface';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-log-in',
@@ -54,5 +57,38 @@ export class LogInComponent {
     ]),
   });
 
-  submit() {}
+  constructor(
+    private userService: UsersService,
+    private router: Router,
+    private ngToastService: NgToastService
+  ) {}
+
+  submit() {
+    this.userService.getAllUsers().subscribe((res) => {
+
+   
+
+      const user = res.find((user: IUsers) => {
+        return (
+          user.email === this.form.value.email &&
+          user.password === this.form.value.password
+        );
+      });
+      if (user) {
+        localStorage.setItem('Users','fakeToken')
+        this.ngToastService.success({
+          detail: 'Success Message',
+          summary: 'User logined successfully',
+        });
+        this.form.reset();
+        this.router.navigate(['/users-list']);
+      } else {
+        this.ngToastService.error({
+          detail: 'Error Message',
+          summary: 'Email or Password is wrong',
+        });
+       ;
+      }
+    });
+  }
 }

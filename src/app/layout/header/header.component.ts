@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { MatDividerModule } from '@angular/material/divider';
+import { UsersService } from '../../shared/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -17,17 +19,17 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     RouterModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  signOut() {
-    // this.authService.signOut()
-  }
+  constructor(private userService: UsersService, private router: Router) {}
 
-  toggleMenu() {
-    // this.sidenavService.toggleNav()
+  logOut() {
+    localStorage.removeItem('Users');
+    this.router.navigate(['/auth']);
   }
 }

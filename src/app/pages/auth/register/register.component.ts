@@ -70,8 +70,13 @@ export class RegisterComponent implements OnInit {
       
   }
   submit() {
+   if(this.form.valid){
     this.userService.regiterUser(this.form.value).subscribe({
-      next: ()=> {this.router.navigate(['/users-list'])}
+      next: (res)=> {
+        this.router.navigate(['/users-list'])}
     })
+   }
+
+    this.form.markAllAsTouched();
   }
 }
