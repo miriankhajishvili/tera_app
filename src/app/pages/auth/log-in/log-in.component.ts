@@ -14,58 +14,45 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { PasswordValidate } from '../../core/validators/password.validators';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-log-in',
   standalone: true,
   imports: [
     CommonModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule,
     FormsModule,
+    MatIconModule,
     MatTabsModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  templateUrl: './log-in.component.html',
+  styleUrl: './log-in.component.scss',
 })
-export class RegisterComponent {
+export class LogInComponent {
+  errorMsg!: string;
+
   hide = true;
-  hideConfirmPassword = true;
   get getEmail() {
     return this.form.get('email');
   }
+
   get getPassword() {
     return this.form.get('password');
   }
 
-  get confirmPassword() {
-    return this.form.get('confirmPassword');
-  }
+  form: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(15),
+    ]),
+  });
 
-  form: FormGroup = new FormGroup(
-    {
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(25),
-      ]),
-      confirmPassword: new FormControl(''),
-    },
-    { validators: PasswordValidate.passwordMatch }
-
-
-  );
-  submit() {
- 
-    
-  }
+  submit() {}
 }

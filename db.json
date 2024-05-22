@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "12",
+      "firstname": "Poul",
+      "lastname": "Stmith",
+      "gender": "Male",
+      "phonenumber": "589898989",
+      "email": "gela@gmail.com",
+      "city": "Wilmington",
+      "country": "Georgia"
+    },
+    {
+      "id": "12",
+      "firstname": "asdas",
+      "lastname": "Stmadsaddasdasdith",
+      "gender": "Male",
+      "phonenumber": "589898989",
+      "email": "gela@gmail.com",
+      "city": "Wilmington",
+      "country": "Georgia"
+    },
+    {
+      "id": "9a94",
+      "firstName": "Mirian",
+      "lastName": "Khajishvili",
+      "email": "admin@example.com",
+      "password": "123456",
+      "confirmPassword": "123456"
+    },
+    {
+      "id": "adf7",
+      "firstname": "Mirian",
+      "lastname": "Khajishvili",
+      "email": "admin@example.com",
+      "password": "Password#1",
+      "confirmPassword": "Password#1"
+    }
+  ]
+}
