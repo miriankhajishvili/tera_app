@@ -14,4 +14,5 @@ export interface IUsers {
   lastname: string;
   password: string;
   email: string;
+  role: string
 }

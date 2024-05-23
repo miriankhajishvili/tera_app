@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { loginGuard } from './core/guards/login.guard';
+import { PagenotfoundComponent } from './shared/components/pagenotfound/pagenotfound.component';
 
 export const routes: Routes = [
   {
@@ -41,4 +42,8 @@ export const routes: Routes = [
         (m) => m.RegisterComponent
       ),
   },
+  { path: '**', pathMatch: 'full',    loadComponent: () =>
+    import('./shared/components/pagenotfound/pagenotfound.component').then(
+      (m) => m.PagenotfoundComponent
+    ), },
 ];

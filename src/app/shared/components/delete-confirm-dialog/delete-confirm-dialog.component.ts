@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialogActions,
@@ -10,7 +10,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
-import { concatMap, switchMap } from 'rxjs';
+import { Subject, concatMap, switchMap, takeUntil } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({
@@ -28,7 +28,8 @@ import { NgToastService } from 'ng-angular-popup';
   templateUrl: './delete-confirm-dialog.component.html',
   styleUrl: './delete-confirm-dialog.component.scss',
 })
-export class DeleteConfirmDialogComponent implements OnInit {
+export class DeleteConfirmDialogComponent implements OnInit, OnDestroy {
+  destroySub$ = new Subject<null>();
   currentUserId!: any;
 
   constructor(
@@ -39,22 +40,28 @@ export class DeleteConfirmDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   this.getCurrentUsersId()
+    this.getCurrentUsersId();
   }
 
-  getCurrentUsersId(){
-    this.usersService.currentUserId.subscribe(
-      (res) => (this.currentUserId = res)
-    );
+  getCurrentUsersId() {
+    this.usersService.currentUserId
+      .pipe(takeUntil(this.destroySub$))
+      .subscribe((res) => (this.currentUserId = res));
   }
 
   onYesClick() {
-    this.usersService.deleteUser(this.currentUserId).subscribe((res) => {
-      this.ngToastService.success({
-        detail: 'Success Message',
-        summary: 'User Deleted successfully',
+    this.usersService
+      .deleteUser(this.currentUserId)
+      .pipe(takeUntil(this.destroySub$))
+      .subscribe((res) => {
+        this.ngToastService.success({
+          detail: 'Success Message',
+          summary: 'User deleted successfully',
+        });
+        this.router.navigate(['/users-list']);
       });
-      this.router.navigate(['/users-list']);
-    });
+  }
+  ngOnDestroy(): void {
+    this.destroySub$.next(null), this.destroySub$.complete();
   }
 }

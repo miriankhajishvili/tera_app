@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,7 +17,7 @@ import { Router, RouterModule } from '@angular/router';
 import { UsersService } from '../../../shared/services/users.service';
 import { IUsers } from '../../../shared/interfaces/users.interface';
 import { NgToastService } from 'ng-angular-popup';
-
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-log-in',
@@ -37,8 +37,10 @@ import { NgToastService } from 'ng-angular-popup';
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss',
 })
-export class LogInComponent {
+export class LogInComponent implements OnDestroy {
   errorMsg!: string;
+
+  destroySub$ = new Subject<null>();
 
   hide = true;
   get getEmail() {
@@ -65,9 +67,7 @@ export class LogInComponent {
   ) {}
 
   submit() {
-    this.userService.getAllUsersForAuth().subscribe((res) => {
-     
-
+    this.userService.getAllUsersForAuth().pipe(takeUntil(this.destroySub$)).subscribe((res) => {
       const user = res.find((user: IUsers) => {
         return (
           user.email === this.form.value.email &&
@@ -89,5 +89,10 @@ export class LogInComponent {
         });
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroySub$.next(null)
+    this.destroySub$.complete()
   }
 }

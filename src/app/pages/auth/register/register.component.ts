@@ -17,6 +17,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PasswordValidate } from '../../../core/validators/password.validators';
 import { UsersService } from '../../../shared/services/users.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -37,6 +38,7 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit, OnDestroy {
+  destroySub$ = new Subject<null>();
   hide = true;
   hideConfirmPassword = true;
   get getEmail() {
@@ -63,6 +65,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         Validators.minLength(5),
         Validators.maxLength(25),
       ]),
+      role: new FormControl('User'),
       confirmPassword: new FormControl(''),
     },
     { validators: PasswordValidate.passwordMatch }
@@ -76,16 +79,24 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.userService.editSub$.subscribe((res) => {
-      this.form.patchValue(res);
-      this.currentUserId = res.id;
-    });
+    this.editUser();
   }
+
+  editUser() {
+    this.userService.editSub$
+      .pipe(takeUntil(this.destroySub$))
+      .subscribe((res) => {
+        this.form.patchValue(res);
+        this.currentUserId = res.id;
+      });
+  }
+
   submit() {
     if (this.form.valid) {
       if (this.isEdit) {
         this.userService
           .editUser(this.currentUserId, this.form.value)
+          .pipe(takeUntil(this.destroySub$))
           .subscribe((res) => {
             this.NgToastService.success({
               detail: 'Success Messege',
@@ -94,17 +105,23 @@ export class RegisterComponent implements OnInit, OnDestroy {
             this.router.navigate(['/users-list']);
           });
       } else {
-        this.userService.regiterUser(this.form.value).subscribe({
-          next: (res) => {
-            localStorage.setItem('Users', 'fakeToken');
-            this.router.navigate(['/users-list']);
-          },
-        });
+        this.userService
+          .regiterUser(this.form.value)
+          .pipe(takeUntil(this.destroySub$))
+          .subscribe({
+            next: (res) => {
+              localStorage.setItem('Users', 'fakeToken');
+              this.router.navigate(['/users-list']);
+            },
+          });
       }
     }
 
     this.form.markAllAsTouched();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.destroySub$.next(null),
+    this.destroySub$.complete();
+  }
 }
