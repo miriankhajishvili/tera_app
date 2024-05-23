@@ -1,26 +1,31 @@
-import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import { Observable } from 'rxjs';
-import {AuthFacade} from "../../facades/auth.facade";
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PermissionGuard implements CanActivate {
-
-  constructor(
-    private authFacade:AuthFacade,
-    private router:Router,
-  ) {
-  }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const permissions = route.data['permissions'] as string[]
-    const userPerms = this.authFacade.permissions;
-
-    const hasPermission = userPerms.some(permission => permissions.includes(permission));
-    return hasPermission ? hasPermission : this.router.createUrlTree(['/access-denied']);
+export const editPermissionGuard: CanActivateFn = (route, state) => {
+  const localData = localStorage.getItem('Role');
+  const ngToastService = inject(NgToastService);
+  if (localData !== 'Admin') {
+    ngToastService.warning({
+      detail: 'Warning Message',
+      summary: 'Unfortunately, the user does not have editing rights',
+    });
+    return false;
   }
 
-}
+  return true;
+};
+
+export const deletePermissionGuard: CanActivateFn = (route, state) => {
+  const localData = localStorage.getItem('Role');
+  const ngToastService = inject(NgToastService);
+  if (localData !== 'Admin') {
+    ngToastService.warning({
+      detail: 'Warning Message',
+      summary: 'Unfortunately, the user does not have delete rights',
+    });
+    return false;
+  }
+
+  return true;
+};

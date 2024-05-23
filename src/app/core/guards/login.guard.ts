@@ -3,7 +3,7 @@ import { CanActivateFn, Router } from '@angular/router';
 
 export const loginGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const localData = localStorage.getItem('Users');
+  const localData = localStorage.getItem('Role');
 
   if (localData) {
     router.navigate(['/users-list']);

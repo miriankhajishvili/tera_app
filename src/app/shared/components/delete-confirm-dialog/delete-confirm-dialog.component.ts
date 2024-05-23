@@ -29,8 +29,8 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrl: './delete-confirm-dialog.component.scss',
 })
 export class DeleteConfirmDialogComponent implements OnInit, OnDestroy {
-  destroySub$ = new Subject<null>();
-  currentUserId!: any;
+  destroySub$ = new Subject<void>();
+  currentUserId!: string;
 
   constructor(
     public dialogRef: MatDialogRef<DeleteConfirmDialogComponent>,
@@ -61,7 +61,8 @@ export class DeleteConfirmDialogComponent implements OnInit, OnDestroy {
         this.router.navigate(['/users-list']);
       });
   }
+
   ngOnDestroy(): void {
-    this.destroySub$.next(null), this.destroySub$.complete();
+    // this.destroySub$.next(), this.destroySub$.complete();
   }
 }

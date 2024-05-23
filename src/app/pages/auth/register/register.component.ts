@@ -110,7 +110,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           .pipe(takeUntil(this.destroySub$))
           .subscribe({
             next: (res) => {
-              localStorage.setItem('Users', 'fakeToken');
+              localStorage.setItem('Role', this.form.value.role);
               this.router.navigate(['/users-list']);
             },
           });

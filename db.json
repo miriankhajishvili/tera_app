@@ -3,137 +3,11 @@
     {
       "firstname": "Admin",
       "lastname": "Admin",
-      "email": "admin@admin.com",
-      "password": "admin123",
-      "confirmPassword": "admin123",
-      "role": "admin",
-      "id": "1"
-    },
-    {
-      "firstname": "John",
-      "lastname": "Doe",
-      "email": "john.doe@example.com",
-      "password": "John12345",
-      "confirmPassword": "John12345",
-      "id": "2",
-      "role": "user"
-    },
-    {
-      "firstname": "Jane",
-      "lastname": "Smith",
-      "email": "jane.smith@example.com",
-      "password": "Jane12345",
-      "confirmPassword": "Jane12345",
-      "id": "3",
-      "role": "user"
-    },
-    {
-      "firstname": "Alice",
-      "lastname": "Johnson",
-      "email": "alice.johnson@example.com",
-      "password": "Alice12345",
-      "confirmPassword": "Alice12345",
-      "id": "4",
-      "role": "user"
-    },
-    {
-      "firstname": "Bob",
-      "lastname": "Brown",
-      "email": "bob.brown@example.com",
-      "password": "Bob12345",
-      "confirmPassword": "Bob12345",
-      "id": "5",
-      "role": "user"
-    },
-    {
-      "firstname": "Charlie",
-      "lastname": "Davis",
-      "email": "charlie.davis@example.com",
-      "password": "Charlie12345",
-      "confirmPassword": "Charlie12345",
-      "id": "6",
-      "role": "user"
-    },
-    {
-      "firstname": "Dave",
-      "lastname": "Miller",
-      "email": "dave.miller@example.com",
-      "password": "Dave12345",
-      "confirmPassword": "Dave12345",
-      "id": "7",
-      "role": "user"
-    },
-    {
-      "firstname": "Eve",
-      "lastname": "Wilson",
-      "email": "eve.wilson@example.com",
-      "password": "Eve12345",
-      "confirmPassword": "Eve12345",
-      "id": "8",
-      "role": "user"
-    },
-    {
-      "firstname": "Frank",
-      "lastname": "Moore",
-      "email": "frank.moore@example.com",
-      "password": "Frank12345",
-      "confirmPassword": "Frank12345",
-      "id": "9",
-      "role": "user"
-    },
-    {
-      "firstname": "Grace",
-      "lastname": "Taylor",
-      "email": "grace.taylor@example.com",
-      "password": "Grace12345",
-      "confirmPassword": "Grace12345",
-      "id": "10",
-      "role": "user"
-    },
-    {
-      "firstname": "Henry",
-      "lastname": "Anderson",
-      "email": "henry.anderson@example.com",
-      "password": "Henry12345",
-      "confirmPassword": "Henry12345",
-      "id": "11",
-      "role": "user"
-    },
-    {
-      "firstname": "Ivy",
-      "lastname": "Thomas",
-      "email": "ivy.thomas@example.com",
-      "password": "Ivy12345",
-      "confirmPassword": "Ivy12345",
-      "id": "12",
-      "role": "user"
-    },
-    {
-      "firstname": "Jack",
-      "lastname": "Jackson",
-      "email": "jack.jackson@example.com",
-      "password": "Jack12345",
-      "confirmPassword": "Jack12345",
-      "id": "13",
-      "role": "user"
-    },
-    {
-      "firstname": "Karen",
-      "lastname": "White",
-      "email": "karen.white@example.com",
-      "password": "Karen12345",
-      "confirmPassword": "Karen12345",
-      "id": "14",
-      "role": "user"
-    },
-    {
-      "firstname": "Larry",
-      "lastname": "Harris",
-      "email": "larry.harris@example.com",
-      "password": "Larry12345",
-      "confirmPassword": "Larry12345",
-      "id": "15",
-      "role": "user"
+      "email": "admin@admin",
+      "password": "Admin123",
+      "confirmPassword": "Admin123",
+      "id": "16",
+      "role": "Admin"
     },
     {
       "firstname": "Mia",
@@ -142,7 +16,7 @@
       "password": "Mia12345",
       "confirmPassword": "Mia12345",
       "id": "16",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Nathan",
@@ -151,7 +25,7 @@
       "password": "Nathan12345",
       "confirmPassword": "Nathan12345",
       "id": "17",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Olivia",
@@ -160,7 +34,7 @@
       "password": "Olivia12345",
       "confirmPassword": "Olivia12345",
       "id": "18",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Paul",
@@ -169,16 +43,7 @@
       "password": "Paul12345",
       "confirmPassword": "Paul12345",
       "id": "19",
-      "role": "user"
-    },
-    {
-      "firstname": "Quincy",
-      "lastname": "Allen",
-      "email": "quincy.allen@example.com",
-      "password": "Quincy12345",
-      "confirmPassword": "Quincy12345",
-      "id": "20",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Rachel",
@@ -187,7 +52,7 @@
       "password": "Rachel12345",
       "confirmPassword": "Rachel12345",
       "id": "21",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Sam",
@@ -196,7 +61,7 @@
       "password": "Sam12345",
       "confirmPassword": "Sam12345",
       "id": "22",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Tina",
@@ -205,7 +70,7 @@
       "password": "Tina12345",
       "confirmPassword": "Tina12345",
       "id": "23",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Uma",
@@ -214,7 +79,7 @@
       "password": "Uma12345",
       "confirmPassword": "Uma12345",
       "id": "24",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Victor",
@@ -223,7 +88,7 @@
       "password": "Victor12345",
       "confirmPassword": "Victor12345",
       "id": "25",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Wendy",
@@ -232,7 +97,7 @@
       "password": "Wendy12345",
       "confirmPassword": "Wendy12345",
       "id": "26",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Xander",
@@ -241,7 +106,7 @@
       "password": "Xander12345",
       "confirmPassword": "Xander12345",
       "id": "27",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Yara",
@@ -250,7 +115,7 @@
       "password": "Yara12345",
       "confirmPassword": "Yara12345",
       "id": "28",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Zane",
@@ -259,7 +124,7 @@
       "password": "Zane12345",
       "confirmPassword": "Zane12345",
       "id": "29",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Anna",
@@ -268,7 +133,7 @@
       "password": "Anna12345",
       "confirmPassword": "Anna12345",
       "id": "30",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Brian",
@@ -277,7 +142,7 @@
       "password": "Brian12345",
       "confirmPassword": "Brian12345",
       "id": "31",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Catherine",
@@ -286,7 +151,7 @@
       "password": "Catherine12345",
       "confirmPassword": "Catherine12345",
       "id": "32",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Daniel",
@@ -295,7 +160,7 @@
       "password": "Daniel12345",
       "confirmPassword": "Daniel12345",
       "id": "33",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Emily",
@@ -304,7 +169,7 @@
       "password": "Emily12345",
       "confirmPassword": "Emily12345",
       "id": "34",
-      "role": "user"
+      "role": "User"
     },
     {
       "firstname": "Felix",
@@ -313,13 +178,22 @@
       "password": "Felix12345",
       "confirmPassword": "Felix12345",
       "id": "35",
-      "role": "user"
+      "role": "User"
     },
     {
       "id": "2bc6",
       "firstname": "Giorgi",
       "lastname": "Kalandadze",
       "email": "mirian.khajishvili@gmail.com",
+      "password": "Mirian123",
+      "role": "User",
+      "confirmPassword": "Mirian123"
+    },
+    {
+      "id": "57fa",
+      "firstname": "Gela",
+      "lastname": "Gela",
+      "email": "gela@gmail.com",
       "password": "Mirian123",
       "role": "User",
       "confirmPassword": "Mirian123"

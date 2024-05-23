@@ -40,7 +40,7 @@ import { Subject, takeUntil } from 'rxjs';
 export class LogInComponent implements OnDestroy {
   errorMsg!: string;
 
-  destroySub$ = new Subject<null>();
+  destroySub$ = new Subject<void>();
 
   hide = true;
   get getEmail() {
@@ -75,7 +75,7 @@ export class LogInComponent implements OnDestroy {
         );
       });
       if (user) {
-        localStorage.setItem('Users', 'fakeToken');
+        localStorage.setItem('Role', user.role);
         this.ngToastService.success({
           detail: 'Success Message',
           summary: 'User logined successfully',
@@ -92,7 +92,7 @@ export class LogInComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroySub$.next(null)
+    this.destroySub$.next()
     this.destroySub$.complete()
   }
 }

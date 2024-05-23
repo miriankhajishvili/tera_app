@@ -30,7 +30,7 @@ export class HeaderComponent {
   constructor(private userService: UsersService, private router: Router) {}
 
   logOut() {
-    localStorage.removeItem('Users');
+    localStorage.clear()
     this.router.navigate(['/auth']);
   }
 }

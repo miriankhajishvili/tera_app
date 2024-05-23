@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { loginGuard } from './core/guards/login.guard';
-import { PagenotfoundComponent } from './shared/components/pagenotfound/pagenotfound.component';
+import { editPermissionGuard,  } from './core/guards/permission.guard';
 
 export const routes: Routes = [
   {
@@ -41,6 +41,7 @@ export const routes: Routes = [
       import('./pages/auth/register/register.component').then(
         (m) => m.RegisterComponent
       ),
+      canActivate: [editPermissionGuard]
   },
   { path: '**', pathMatch: 'full',    loadComponent: () =>
     import('./shared/components/pagenotfound/pagenotfound.component').then(
