@@ -17,6 +17,7 @@ import { Router, RouterModule } from '@angular/router';
 import { UsersService } from '../../../shared/services/users.service';
 import { IUsers } from '../../../shared/interfaces/users.interface';
 import { NgToastService } from 'ng-angular-popup';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-log-in',
@@ -64,9 +65,8 @@ export class LogInComponent {
   ) {}
 
   submit() {
-    this.userService.getAllUsers().subscribe((res) => {
-
-   
+    this.userService.getAllUsersForAuth().subscribe((res) => {
+      console.log(res);
 
       const user = res.find((user: IUsers) => {
         return (
@@ -75,7 +75,7 @@ export class LogInComponent {
         );
       });
       if (user) {
-        localStorage.setItem('Users','fakeToken')
+        localStorage.setItem('Users', 'fakeToken');
         this.ngToastService.success({
           detail: 'Success Message',
           summary: 'User logined successfully',
@@ -87,7 +87,6 @@ export class LogInComponent {
           detail: 'Error Message',
           summary: 'Email or Password is wrong',
         });
-       ;
       }
     });
   }

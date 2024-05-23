@@ -1,31 +1,32 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { Observable, shareReplay } from 'rxjs';
-import { IUsers } from '../interfaces/users.interface';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { IData, IUsers } from '../interfaces/users.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService extends BaseService {
+  currentUserId = new BehaviorSubject<string>('');
 
+  getAllUsers(pageCount?: number): Observable<IData> {
+    return this.get<IData>(`users?_page=${pageCount}&_per_page=20`);
+  }
 
-
-  getAllUsers(): Observable<IUsers[]> {
-
-
+  getAllUsersForAuth(): Observable<IUsers[]> {
     return this.get<IUsers[]>('users');
   }
 
   regiterUser(newUser: IUsers): Observable<IUsers> {
-    let users: IUsers[] = [];
-    let Myuser = localStorage.getItem('Users');
-
-    if (Myuser) {
-      users = JSON.parse(Myuser);
-      users = [newUser, ...users];
-    } else users = [newUser];
-
-    localStorage.setItem('Users', JSON.stringify(users));
     return this.post<IUsers>('users', newUser);
   }
+
+  getCurrentUser(id: number): Observable<IUsers> {
+    return this.get<IUsers>(`users/${id}`);
+  }
+
+  deleteUser(id: string): Observable<IUsers> {
+    return this.delete<IUsers>(`users/${id}`);
+  }
+
 }

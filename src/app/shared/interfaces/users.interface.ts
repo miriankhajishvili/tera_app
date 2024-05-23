@@ -8,16 +8,10 @@ export interface IData {
   data: IUsers[];
 }
 
-
-
 export interface IUsers {
   id: string;
   firstname: string;
   lastname: string;
-  password:string
-  gender: string;
-  phonenumber: string;
+  password: string;
   email: string;
-  city: string;
-  countrty: string;
 }

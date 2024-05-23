@@ -64,18 +64,18 @@ export class RegisterComponent implements OnInit {
     { validators: PasswordValidate.passwordMatch }
   );
 
-  constructor(private userService:UsersService, private router:Router){}
+  constructor(private userService: UsersService, private router: Router) {}
 
-  ngOnInit(): void {
-      
-  }
+  ngOnInit(): void {}
   submit() {
-   if(this.form.valid){
-    this.userService.regiterUser(this.form.value).subscribe({
-      next: (res)=> {
-        this.router.navigate(['/users-list'])}
-    })
-   }
+    if (this.form.valid) {
+      this.userService.regiterUser(this.form.value).subscribe({
+        next: (res) => {
+          localStorage.setItem('Users','fakeToken')
+          this.router.navigate(['/users-list']);
+        },
+      });
+    }
 
     this.form.markAllAsTouched();
   }

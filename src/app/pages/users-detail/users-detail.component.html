@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="main-body">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3"></div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h3 class="mb-0">Full Name</h3>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span
+                  >{{ curentUser?.firstname }} {{ curentUser?.lastname }}</span
+                >
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h3 class="mb-0">Gender</h3>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>Male</span>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h3 class="mb-0">Personal ID</h3>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>Hello</span>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h3 class="mb-0">Mobile Number</h3>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>Hello</span>
+              </div>
+            </div>
+            <hr />
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h3 class="mb-0">Address</h3>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>Hello</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <h3 class="mb-0">Legal City</h3>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>Hello</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <h3 class="mb-0">Legal Country</h3>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>Hello</span>
+              </div>
+            </div>
+
+            <hr />
+
+            <div>
+              <button (click)="onEditClick()"
+                style="background-color: rgb(213, 195, 77)"
+                mat-flat-button
+                color="accent"
+              >
+                Edit Profile
+              </button>
+              <button
+                type="button"
+                (click)="openDialog('0ms', '0ms')"
+                style="margin-left: 10px"
+                mat-flat-button
+                color="warn"
+              >
+                Delete User
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

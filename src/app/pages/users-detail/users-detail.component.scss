@@ -1,0 +1,30 @@
+:host ::ng-deep.add-card {
+    display: flex;
+  
+    border: none;
+    text-decoration: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  
+    &__button {
+      font-size: 1rem;
+      
+    }
+  }
+  :host ::ng-deep.dialog-buttons {
+    margin-top: 7rem;
+   
+  }
+  
+  :host ::ng-deep.active {
+    color: green;
+  }
+  
+  :host ::ng-deep.deactivated {
+    color: red;
+  }
+  :host ::ng-deep.deactivated-card {
+    opacity: 0.3;
+  }
+  

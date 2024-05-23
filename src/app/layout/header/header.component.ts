@@ -21,6 +21,7 @@ import { UsersService } from '../../shared/services/users.service';
     MatToolbarModule,
     MatButtonModule,
     MatDividerModule,
+    MatButtonModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
