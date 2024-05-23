@@ -47,17 +47,17 @@ export class UsersListComponent implements OnInit {
         this.users$ = res.data;
         this.items = res.items;
       });
-    console.log(this.currentPage);
+   
 
 
     
   }
 
   handlePageEvent($event: PageEvent) {
-    console.log(this.currentPage);
+
 
     this.currentPage + 1;
-    console.log($event);
+
     this.userService.getAllUsers($event.pageIndex).subscribe((res) => {
       this.users$ = res.data;
     });

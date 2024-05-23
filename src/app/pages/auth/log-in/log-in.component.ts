@@ -66,7 +66,7 @@ export class LogInComponent {
 
   submit() {
     this.userService.getAllUsersForAuth().subscribe((res) => {
-      console.log(res);
+     
 
       const user = res.find((user: IUsers) => {
         return (

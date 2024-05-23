@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../shared/services/users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { IUsers } from '../../shared/interfaces/users.interface';
@@ -20,7 +20,8 @@ export class UsersDetailComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private activatedRoute: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -45,5 +46,8 @@ export class UsersDetailComponent implements OnInit {
     this.usersService.currentUserId.next(this.activatedRoute.snapshot.params['id'])
   }
 
-  onEditClick(){}
+  onEditClick(){
+    this.usersService.editSub$.next(this.curentUser)
+    this.router.navigate(['/edit-user', this.curentUser?.id])
+  }
 }

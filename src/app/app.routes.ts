@@ -13,7 +13,6 @@ export const routes: Routes = [
   },
   {
     path: 'register',
-    canActivate: [loginGuard],
     loadComponent: () =>
       import('./pages/auth/register/register.component').then(
         (m) => m.RegisterComponent
@@ -34,5 +33,12 @@ export const routes: Routes = [
         (m) => m.UsersDetailComponent
       ),
     canActivate: [authGuard],
+  },
+  {
+    path: 'edit-user/:id',
+    loadComponent: () =>
+      import('./pages/auth/register/register.component').then(
+        (m) => m.RegisterComponent
+      ),
   },
 ];
