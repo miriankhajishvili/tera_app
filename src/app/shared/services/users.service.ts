@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
 import { IData, IUsers } from '../interfaces/users.interface';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class UsersService extends BaseService {
   editSub$ = new BehaviorSubject<any>(null);
 
   getAllUsers(pageCount?: number): Observable<IData> {
-    return this.get<IData>(`users?_page=${pageCount}&_per_page=20`);
+    return this.get<IData>(`users?_page=${pageCount}&_per_page=10`);
   }
 
   getAllUsersForAuth(): Observable<IUsers[]> {

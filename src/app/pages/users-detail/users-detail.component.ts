@@ -42,12 +42,14 @@ export class UsersDetailComponent implements OnInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
-    
-    this.usersService.currentUserId.next(this.activatedRoute.snapshot.params['id'])
+
+    this.usersService.currentUserId.next(
+      this.activatedRoute.snapshot.params['id']
+    );
   }
 
-  onEditClick(){
-    this.usersService.editSub$.next(this.curentUser)
-    this.router.navigate(['/edit-user', this.curentUser?.id])
+  onEditClick() {
+    this.usersService.editSub$.next(this.curentUser);
+    this.router.navigate(['/edit-user', this.curentUser?.id]);
   }
 }
