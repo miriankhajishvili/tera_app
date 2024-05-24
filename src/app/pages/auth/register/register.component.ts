@@ -18,6 +18,8 @@ import { PasswordValidate } from '../../../core/validators/password.validators';
 import { UsersService } from '../../../shared/services/users.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Subject, takeUntil } from 'rxjs';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 @Component({
   selector: 'app-register',
@@ -33,11 +35,13 @@ import { Subject, takeUntil } from 'rxjs';
     MatCheckboxModule,
     ReactiveFormsModule,
     RouterModule,
+    MatRadioModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit, OnDestroy {
+  localData = localStorage.getItem('Role')
   destroySub$ = new Subject<null>();
   hide = true;
   hideConfirmPassword = true;
@@ -80,14 +84,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.editUser();
+ 
   }
 
   editUser() {
     this.userService.editSub$
       .pipe(takeUntil(this.destroySub$))
       .subscribe((res) => {
-        console.log(res)
-        console.log('ID',res.id)
+      
         this.currentUserId = res.id;
         this.form.patchValue(res);
       });
@@ -105,7 +109,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
               summary: 'User edited successfully',
             });
             this.router.navigate(['/users-list']);
+           
           });
+          this.form.reset()
       } else {
         this.userService
           .regiterUser(this.form.value)
@@ -129,7 +135,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroySub$.next(null),
     this.destroySub$.complete();
-    console.log('Hi')
+  
 
   }
 }

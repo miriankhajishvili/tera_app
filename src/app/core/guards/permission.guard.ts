@@ -6,9 +6,9 @@ export const editPermissionGuard: CanActivateFn = (route, state) => {
   const localData = localStorage.getItem('Role');
   const ngToastService = inject(NgToastService);
   if (localData !== 'Admin') {
-    ngToastService.warning({
+    ngToastService.error({
       detail: 'Warning Message',
-      summary: 'Unfortunately, the user does not have editing rights',
+      summary: 'Unfortunately, only Admin can edit user.',
     });
     return false;
   }
@@ -16,16 +16,3 @@ export const editPermissionGuard: CanActivateFn = (route, state) => {
   return true;
 };
 
-export const deletePermissionGuard: CanActivateFn = (route, state) => {
-  const localData = localStorage.getItem('Role');
-  const ngToastService = inject(NgToastService);
-  if (localData !== 'Admin') {
-    ngToastService.warning({
-      detail: 'Warning Message',
-      summary: 'Unfortunately, the user does not have delete rights',
-    });
-    return false;
-  }
-
-  return true;
-};

@@ -1,31 +1,31 @@
 {
   "users": [
     {
-      "firstname": "Gela",
-      "lastname": "Admin",
-      "email": "admin@admin",
+      "firstname": "adads",
+      "lastname": "asdasd",
+      "email": "mia.martin@example.com",
       "password": "Admin123",
       "role": "Admin",
       "confirmPassword": "Admin123",
-      "id": "16"
+      "id": "asdsad"
     },
     {
-      "firstname": "Mia",
+      "firstname": "Mirian",
       "lastname": "Martin",
       "email": "mia.martin@example.com",
       "password": "Mia12345",
+      "role": "User",
       "confirmPassword": "Mia12345",
-      "id": "16",
-      "role": "User"
+      "id": "16"
     },
     {
       "firstname": "Nathan",
       "lastname": "Lee",
       "email": "nathan.lee@example.com",
       "password": "Nathan12345",
+      "role": "Admin",
       "confirmPassword": "Nathan12345",
-      "id": "17",
-      "role": "User"
+      "id": "17"
     },
     {
       "firstname": "Olivia",
@@ -41,9 +41,9 @@
       "lastname": "Hall",
       "email": "paul.hall@example.com",
       "password": "Paul12345",
+      "role": "Admin",
       "confirmPassword": "Paul12345",
-      "id": "19",
-      "role": "User"
+      "id": "19"
     },
     {
       "firstname": "Rachel",
@@ -271,13 +271,13 @@
       "confirmPassword": "Admin123"
     },
     {
-      "id": "2ff8",
       "firstname": "asdasd",
       "lastname": "asdasd",
       "email": "admin@admin",
       "password": "Admin123",
-      "role": "User",
-      "confirmPassword": "Admin123"
+      "role": "Admin",
+      "confirmPassword": "Admin123",
+      "id": "2ff8"
     }
   ]
 }

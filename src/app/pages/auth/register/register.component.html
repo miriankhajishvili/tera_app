@@ -40,6 +40,14 @@
                   
                 
               </mat-form-field>
+
+              @if ( localData == 'Admin') {<div  style="display: flex; justify-content: center;">
+                <mat-radio-group formControlName="role" aria-label="Select an option">
+                  <mat-radio-button value="Admin">Admin</mat-radio-button>
+                  <mat-radio-button value="User">User</mat-radio-button>
+                </mat-radio-group>
+               </div>}
+           
               <mat-form-field>
                 <input
                   matInput
