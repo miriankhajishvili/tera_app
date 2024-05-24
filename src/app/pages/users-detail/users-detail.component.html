@@ -21,7 +21,7 @@
                 <h3 class="mb-0">Email</h3>
               </div>
               <div class="col-sm-9 text-secondary">
-                <span>{{curentUser?.email}}</span>
+                <span>{{ curentUser?.email }}</span>
               </div>
             </div>
             <hr />
@@ -30,7 +30,7 @@
                 <h3 class="mb-0">Role</h3>
               </div>
               <div class="col-sm-9 text-secondary">
-                <span>{{curentUser?.role}}</span>
+                <span>{{ curentUser?.role }}</span>
               </div>
             </div>
             <hr />
@@ -72,14 +72,17 @@
             <hr />
 
             <div>
-              <button (click)="onEditClick()"
+              <button
+                (click)="onEditClick()"
                 style="background-color: rgb(213, 195, 77)"
                 mat-flat-button
                 color="accent"
               >
                 Edit Profile
               </button>
-              <button *ngIf="localData === 'Admin'"
+
+              @if (localData ==='Admin') {
+              <button
                 type="button"
                 (click)="openDialog('0ms', '0ms')"
                 style="margin-left: 10px"
@@ -88,6 +91,7 @@
               >
                 Delete User
               </button>
+              }
             </div>
           </div>
         </div>

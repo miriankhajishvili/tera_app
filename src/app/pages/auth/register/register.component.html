@@ -33,8 +33,10 @@
                   placeholder="Email"
                   name="email"
                   formControlName="email">
-                  <mat-error *ngIf="getEmail?.errors?.['required']">Email is mandatory</mat-error>
-                  <mat-error *ngIf="getEmail?.errors?.['email']">Please enter the email in the correct format </mat-error>
+                  @if (getEmail?.errors?.['required']) {<mat-error>Email is mandatory</mat-error>}
+                  @if (getEmail?.errors?.['email']) {<mat-error >Please enter the email in the correct format </mat-error>}
+                 
+                
                   
                 
               </mat-form-field>
@@ -51,10 +53,10 @@
                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
-                  
-                  <mat-error *ngIf="getPassword?.errors?.['required']">Password is required</mat-error>
-                    <mat-error *ngIf="getPassword?.errors?.['minlength']">Password minlength must be at least 5 characters</mat-error>
-                    <mat-error *ngIf="getPassword?.errors?.['maxlength']">Password minlength must be less than 25 characters</mat-error>
+                  @if (getPassword?.errors?.['required'])  { <mat-error >Password is required</mat-error>}
+                  @if (getPassword?.errors?.['minlength']) { <mat-error >Password minlength must be at least 5 characters</mat-error>}
+                  @if (getPassword?.errors?.['maxlength']) { <mat-error >Password minlength must be less than 25 characters</mat-error> }
+                   
               </mat-form-field>
               <mat-form-field>
                 <input
@@ -78,13 +80,19 @@
                 class="login-button">
                 Submit
               </button>
-              <button *ngIf="!isEdit"
-              routerLink="/auth"
-              mat-raised-button
-              color="warn"
-              class="login-button">
-              Sign in
-            </button>
+
+              @if (!isEdit) {
+                <button
+                routerLink="/auth"
+                mat-raised-button
+                color="warn"
+                class="login-button">
+                Sign in
+              </button>
+              }
+
+
+         
             </form>
           </mat-card-content>
         </mat-tab> 

@@ -215,6 +215,15 @@
       "password": "Admin123",
       "role": "User",
       "confirmPassword": "Admin123"
+    },
+    {
+      "id": "f77d",
+      "firstname": "adas",
+      "lastname": "asddasda",
+      "email": "admin@admin",
+      "password": "Admin123",
+      "role": "User",
+      "confirmPassword": "Admin123"
     }
   ]
 }

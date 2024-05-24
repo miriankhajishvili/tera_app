@@ -1,72 +1,85 @@
-
 <div class="login-page">
-    <mat-card class="mat-elevation-z12">
-      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
-        <mat-tab label="Sign In">
-            <mat-card-content>
-              <form  [formGroup]="form" (ngSubmit)="submit()">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Email"
-                    type="email"
-                    name="email"
-                    formControlName="email"
-                    id="email">
-                     <mat-error *ngIf="getEmail?.errors?.['required']">Email is required</mat-error>
-                     <mat-error *ngIf="getEmail?.errors?.['email']">Email form is required</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Password"
-                    type="password"
-                    name="password"
-                    id="password"
-                    formControlName="password"
-                    matInput [type]="hide ? 'password' : 'text'">
-                    
-                  
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                    
-                    <mat-error *ngIf="getPassword?.errors?.['required']">Password is required</mat-error>
-                    <mat-error *ngIf="getPassword?.errors?.['minlength']">Password minlength must be at least 4 characters</mat-error>
-                    <mat-error *ngIf="getPassword?.errors?.['maxlength']">Password minlength must be less than 15 characters</mat-error>
-                 
-                </mat-form-field>
+  <mat-card class="mat-elevation-z12">
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+      <mat-tab label="Sign In">
+        <mat-card-content>
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Email"
+                type="email"
+                name="email"
+                formControlName="email"
+                id="email"
+              />
 
-              <div>
-                <mat-error >{{errorMsg}}</mat-error>
-              </div>
-                
-                
-                <button
-                  mat-raised-button
-                  color="primary"
-                  class="login-button">
-                  Sign In
-                </button>
+              @if (getEmail?.errors?.['required']) {
+              <mat-error>Email is mandatory</mat-error>
+              } @if (getEmail?.errors?.['email']) {
+              <mat-error>Please enter the email in the correct format</mat-error
+              >}
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Password"
+                type="password"
+                name="password"
+                id="password"
+                formControlName="password"
+                matInput
+                [type]="hide ? 'password' : 'text'"
+              />
 
-                
-                <button
-                type="button"
-                [routerLink]="['/register']"
-                mat-raised-button
-                color="warn"
-                class="login-button">
-                Registration
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
               </button>
 
-  
+              @if (getPassword?.errors?.['required']) {<mat-error
+                >Password is required</mat-error
+              >}
 
-              </form>
-            </mat-card-content>
-        </mat-tab>
-      
+               @if (getPassword?.errors?.['minlength']) {
+              <mat-error
+                >Password minlength must be at least 4 characters</mat-error
+              >} 
+              
+              @if (getPassword?.errors?.['maxlength']) {
+              <mat-error
+                >Password minlength must be less than 15 characters</mat-error
+              >}
+              
+            </mat-form-field>
 
-      </mat-tab-group>
-    </mat-card>
-  </div>
-  
+            <div>
+              <mat-error>{{ errorMsg }}</mat-error>
+            </div>
+
+            <button mat-raised-button color="primary" class="login-button">
+              Sign In
+            </button>
+
+            <button
+              type="button"
+              [routerLink]="['/register']"
+              mat-raised-button
+              color="warn"
+              class="login-button"
+            >
+              Registration
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>
