@@ -242,6 +242,33 @@
       "password": "Admin123",
       "role": "Admin",
       "confirmPassword": "Admin123"
+    },
+    {
+      "id": "118a",
+      "firstname": "sdasd",
+      "lastname": "asdasd",
+      "email": "admin@admin",
+      "password": "Admin123",
+      "role": "User",
+      "confirmPassword": "Admin123"
+    },
+    {
+      "id": "fd1f",
+      "firstname": "Felix",
+      "lastname": "Roberts",
+      "email": "felix.roberts@example.com",
+      "password": "Felix12345",
+      "role": "User",
+      "confirmPassword": "Felix12345"
+    },
+    {
+      "id": "b653",
+      "firstname": "asdas",
+      "lastname": "dasdasd",
+      "email": "admin@admin",
+      "password": "Admin123",
+      "role": "User",
+      "confirmPassword": "Admin123"
     }
   ]
 }

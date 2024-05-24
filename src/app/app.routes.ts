@@ -6,7 +6,7 @@ import { HeaderComponent } from './layout/header/header.component';
 
 export const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     canActivate: [loginGuard],
     loadChildren: () =>
       import('./pages/auth/auth.routes').then((m) => m.routes),
@@ -48,14 +48,15 @@ export const routes: Routes = [
           ),
         canActivate: [editPermissionGuard],
       },
-      {
-        path: '**',
-        pathMatch: 'full',
-        loadComponent: () =>
-          import(
-            './shared/components/pagenotfound/pagenotfound.component'
-          ).then((m) => m.PagenotfoundComponent),
-      },
+    
     ],
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import(
+        './shared/components/pagenotfound/pagenotfound.component'
+      ).then((m) => m.PagenotfoundComponent),
   },
 ];

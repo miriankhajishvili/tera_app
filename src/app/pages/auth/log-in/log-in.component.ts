@@ -81,7 +81,7 @@ export class LogInComponent implements OnDestroy {
           summary: 'User logged in successfully',
         });
         this.form.reset();
-        this.router.navigate(['']);
+        this.router.navigate(['/users-list']);
       } else {
         this.ngToastService.error({
           detail: 'Error Message',
