@@ -42,6 +42,6 @@ export class LogOutDialogComponent implements OnInit {
       detail: 'Success Message',
       summary: 'User logged out successfully',
     });
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/auth/login']);
   }
 }
