@@ -56,7 +56,7 @@ export class UsersDetailComponent implements OnInit, OnDestroy {
 
   onEditClick() {
     this.usersService.editSub$.next(this.curentUser);
-    this.router.navigate(['/edit-user', this.curentUser?.id]);
+    this.router.navigate(['/edit-user', this.curentUser!.id]);
   }
   ngOnDestroy(): void {
     this.destroySub$.next(),

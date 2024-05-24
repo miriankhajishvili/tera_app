@@ -2,26 +2,40 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# About App
 
-## Code scaffolding
+Project is about user Management Dashboard where you can rule users info. A user can have only two roles: User and Admin. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- The project includes an authorization/registration page that has its own validations and obligation to fill in mandatory fields. Angular reactive forms is used for user authentication/registration.
 
-## Running unit tests
+1) The data of the registered user goes to the JSON server, whose role is necessarily USER.
+2) You usually use an email and a passcode for authorization.
+3) After successful authentication, you will automatically go to the user list page where all users and their information are located.
+4) Due to the size of the data, pagination is used, where a list of users of a particular page comes when you go to each page (Lazy http request)
+5) Angular Router is used to navigate between pages.which is also loaded as a lazy load.
+6) To manage asynchronous information, the RxJs library is used.
+7) Guards are also used. which ensures user rights. For example if you don't have admin assigned you won't be able to delete or edit a user.
+8) It is not possible to create a user with the role of admin through registration. For this, the admin email and password are prepared in advance. Email: Admin@admin and Password: Admin123
+9) Angular HttpClient is used to interact with the back server. (JSON Server)
+10) For every successful or unsuccessful operation, a corresponding note is displayed, so that the customer can understand whether he made a mistake or not, or vice versa.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Install App 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1) To install Angular application, please run the following command: npm i
+2) To install Jason Server please run the following command: npm i json-server
+
+
+
+## Running App
+
+1) To Run Angular application, please run the following command: ng s
+2) To Run Jason Server please run the following command: $ npx json-server --watch db.json
+
+
+

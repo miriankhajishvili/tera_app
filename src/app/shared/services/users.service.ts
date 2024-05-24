@@ -9,7 +9,7 @@ import { IData, IUsers } from '../interfaces/users.interface';
 export class UsersService extends BaseService {
   currentUserId = new BehaviorSubject<string>('');
 
-  editSub$ = new BehaviorSubject<any>(null);
+  editSub$ = new BehaviorSubject<any>(1);
 
   getAllUsers(pageCount?: number): Observable<IData> {
     return this.get<IData>(`users?_page=${pageCount}&_per_page=10`);
@@ -27,7 +27,7 @@ export class UsersService extends BaseService {
     return this.get<IUsers>(`users/${id}`);
   }
   editUser(id: number | undefined, data: IUsers): Observable<IUsers> {
-    return this.put<any>(`users/${id}`, data);
+    return this.put<IUsers>(`users/${id}`, data);
   }
 
   deleteUser(id: string): Observable<IUsers> {

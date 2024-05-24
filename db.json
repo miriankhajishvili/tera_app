@@ -269,6 +269,15 @@
       "password": "Admin123",
       "role": "User",
       "confirmPassword": "Admin123"
+    },
+    {
+      "id": "2ff8",
+      "firstname": "asdasd",
+      "lastname": "asdasd",
+      "email": "admin@admin",
+      "password": "Admin123",
+      "role": "User",
+      "confirmPassword": "Admin123"
     }
   ]
 }

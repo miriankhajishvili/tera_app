@@ -86,6 +86,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.userService.editSub$
       .pipe(takeUntil(this.destroySub$))
       .subscribe((res) => {
+        console.log(res)
+        console.log('ID',res.id)
         this.currentUserId = res.id;
         this.form.patchValue(res);
       });
