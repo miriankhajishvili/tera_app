@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class UsersDetailComponent implements OnInit, OnDestroy {
 
-  destroySub$ = new Subject<null>();
+  destroySub$ = new Subject<void>();
   curentUser?: IUsers;
   localData = localStorage.getItem('Role')
 
@@ -59,7 +59,8 @@ export class UsersDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['/edit-user', this.curentUser?.id]);
   }
   ngOnDestroy(): void {
-    this.destroySub$.next(null),
+    this.destroySub$.next(),
     this.destroySub$.complete();
+    
   }
 }

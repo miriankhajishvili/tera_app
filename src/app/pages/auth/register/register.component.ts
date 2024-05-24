@@ -86,8 +86,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.userService.editSub$
       .pipe(takeUntil(this.destroySub$))
       .subscribe((res) => {
-        this.form.patchValue(res);
         this.currentUserId = res.id;
+        this.form.patchValue(res);
       });
   }
 
@@ -110,6 +110,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
           .pipe(takeUntil(this.destroySub$))
           .subscribe({
             next: (res) => {
+              this.NgToastService.success({
+                detail: 'Success Messege',
+                summary: 'User registered successfully',
+              });
               localStorage.setItem('Role', this.form.value.role);
               this.router.navigate(['/users-list']);
             },
@@ -123,5 +127,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroySub$.next(null),
     this.destroySub$.complete();
+    console.log('Hi')
+
   }
 }

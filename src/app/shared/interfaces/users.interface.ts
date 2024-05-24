@@ -9,7 +9,7 @@ export interface IData {
 }
 
 export interface IUsers {
-  id: string;
+  id?: string
   firstname: string;
   lastname: string;
   password: string;

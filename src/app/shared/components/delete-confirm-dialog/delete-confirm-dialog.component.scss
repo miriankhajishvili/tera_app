@@ -2,10 +2,3 @@ button {
   margin-right: 8px;
 }
 
-:host ::ng-deep.mat-mdc-dialog-surface {
-  border-radius: 15px;
-}
-
-:host ::ng-deep .mat-mdc-dialog-container.mdc-dialog.cdk-dialog-container.mat-mdc-dialog-container-with-actions.mdc-dialog--open{
-    border-radius: 15px;
-  }

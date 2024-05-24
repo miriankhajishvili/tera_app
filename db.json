@@ -1,13 +1,13 @@
 {
   "users": [
     {
-      "firstname": "Admin",
+      "firstname": "Gela",
       "lastname": "Admin",
       "email": "admin@admin",
       "password": "Admin123",
+      "role": "Admin",
       "confirmPassword": "Admin123",
-      "id": "16",
-      "role": "Admin"
+      "id": "16"
     },
     {
       "firstname": "Mia",
@@ -197,6 +197,24 @@
       "password": "Mirian123",
       "role": "User",
       "confirmPassword": "Mirian123"
+    },
+    {
+      "id": "3541",
+      "firstname": "ჰაააი",
+      "lastname": "საფაფ",
+      "email": "admin@admin",
+      "password": "Admin123",
+      "role": "User",
+      "confirmPassword": "Admin123"
+    },
+    {
+      "id": "dc93",
+      "firstname": "asdasd",
+      "lastname": "adsasd",
+      "email": "admin@admin",
+      "password": "Admin123",
+      "role": "User",
+      "confirmPassword": "Admin123"
     }
   ]
 }

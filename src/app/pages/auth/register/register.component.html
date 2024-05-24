@@ -10,7 +10,7 @@
                   placeholder="First Name"
                   name="firstName"
                   formControlName="firstname">
-                  <mat-error>First name is required</mat-error>
+                  <mat-error>First Name is mandatory</mat-error>
                 
              
   
@@ -21,7 +21,7 @@
                   placeholder="Last Name"
                   name="lastName"
                   formControlName="lastname">
-                  <mat-error>Last name is required</mat-error>
+                  <mat-error>Last Name is mandatory</mat-error>
                 
                 
                   
@@ -33,8 +33,8 @@
                   placeholder="Email"
                   name="email"
                   formControlName="email">
-                  <mat-error *ngIf="getEmail?.errors?.['required']">Email is required</mat-error>
-                  <mat-error *ngIf="getEmail?.errors?.['email']">Email form is required</mat-error>
+                  <mat-error *ngIf="getEmail?.errors?.['required']">Email is mandatory</mat-error>
+                  <mat-error *ngIf="getEmail?.errors?.['email']">Please enter the email in the correct format </mat-error>
                   
                 
               </mat-form-field>
@@ -68,7 +68,7 @@
                   <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
                     <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
-                  <mat-error>Password Does not matchs!!</mat-error>
+                  <mat-error>Passwords do not match!</mat-error>
 
               </mat-form-field>
 

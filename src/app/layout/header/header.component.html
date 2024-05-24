@@ -1,7 +1,7 @@
 <header>
   <mat-toolbar color="primary" class="header">
     <mat-toolbar-row>
-      <span class="logo" routerLink="/users-list">My App</span>
+      <span  class="logo" routerLink="/users-list">My App</span>
       <span
         routerLink="/users-list"
         style="cursor: pointer"
@@ -14,7 +14,7 @@
       <div class="header-right-side">
         <button
           mat-icon-button
-          (click)="logOut()"
+          (click)="openDialog('0ms', '0ms')"
           class="example-icon"
           aria-label="Example icon-button with menu icon"
         >

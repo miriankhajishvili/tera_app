@@ -78,7 +78,7 @@ export class LogInComponent implements OnDestroy {
         localStorage.setItem('Role', user.role);
         this.ngToastService.success({
           detail: 'Success Message',
-          summary: 'User logined successfully',
+          summary: 'User logged in successfully',
         });
         this.form.reset();
         this.router.navigate(['/users-list']);
