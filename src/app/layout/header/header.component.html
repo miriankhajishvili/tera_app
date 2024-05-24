@@ -1,6 +1,7 @@
 <header>
   <mat-toolbar color="primary" class="header">
     <mat-toolbar-row>
+  
       <span  class="logo" routerLink="/users-list">My App</span>
       <span
         routerLink="/users-list"
@@ -11,6 +12,7 @@
       </span>
 
       <span class="example-spacer"></span>
+      <p style="margin-top: 13px;">{{localData}}</p>
       <div class="header-right-side">
         <button
           mat-icon-button
@@ -19,8 +21,11 @@
           aria-label="Example icon-button with menu icon"
         >
           <span class="material-icons"> logout </span>
+         
         </button>
+       
       </div>
+      
     </mat-toolbar-row>
   </mat-toolbar>
 </header>

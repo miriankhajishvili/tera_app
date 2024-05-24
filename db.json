@@ -278,6 +278,15 @@
       "role": "Admin",
       "confirmPassword": "Admin123",
       "id": "2ff8"
+    },
+    {
+      "id": "1de8",
+      "firstname": "adads",
+      "lastname": "asdasd",
+      "email": "mia.martin@example.com",
+      "password": "Admin123",
+      "role": "Admin",
+      "confirmPassword": "Admin123"
     }
   ]
 }

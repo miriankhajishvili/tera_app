@@ -29,6 +29,10 @@ import { LogOutDialogComponent } from '../../shared/components/log-out-dialog/lo
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+
+
+  localData = localStorage.getItem('Name');
+
   constructor(public dialog: MatDialog) {}
 
   openDialog(
