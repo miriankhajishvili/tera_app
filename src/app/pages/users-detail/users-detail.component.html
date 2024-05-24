@@ -79,7 +79,7 @@
               >
                 Edit Profile
               </button>
-              <button
+              <button *ngIf="localData === 'Admin'"
                 type="button"
                 (click)="openDialog('0ms', '0ms')"
                 style="margin-left: 10px"

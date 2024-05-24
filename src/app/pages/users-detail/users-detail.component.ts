@@ -7,11 +7,12 @@ import { IUsers } from '../../shared/interfaces/users.interface';
 import { MatButtonModule } from '@angular/material/button';
 import { DeleteConfirmDialogComponent } from '../../shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
 import { Subject, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-users-detail',
   standalone: true,
-  imports: [MatButtonModule, MatDialogModule],
+  imports: [CommonModule,MatButtonModule, MatDialogModule],
   templateUrl: './users-detail.component.html',
   styleUrl: './users-detail.component.scss',
 })
@@ -19,6 +20,8 @@ export class UsersDetailComponent implements OnInit, OnDestroy {
 
   destroySub$ = new Subject<null>();
   curentUser?: IUsers;
+  localData = localStorage.getItem('Role')
+
 
   constructor(
     private usersService: UsersService,
