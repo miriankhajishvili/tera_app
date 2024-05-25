@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import {
   MatPaginator,
   MatPaginatorModule,
@@ -13,6 +19,7 @@ import { IUsers } from '../../shared/interfaces/users.interface';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../layout/header/header.component';
 import { Subject, takeUntil } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-users-list',
@@ -30,14 +37,14 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
 })
-export class UsersListComponent implements OnInit , OnDestroy {
-  destroySub$ = new Subject<null>();
+export class UsersListComponent implements OnInit {
+  destroyRef: DestroyRef = inject(DestroyRef);
   currentPage: number = 0;
-  displayedColumns: string[] = ['id', 'fullname', 'email', 'role',  'profile'];
+  displayedColumns: string[] = ['id', 'fullname', 'email', 'role', 'profile'];
   users$: IUsers[] = [];
   items!: number;
 
-  constructor(private userService: UsersService) {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -45,22 +52,21 @@ export class UsersListComponent implements OnInit , OnDestroy {
 
   getAllUsers() {
     this.currentPage = this.currentPage + 1;
-    this.userService
+    this.usersService
       .getAllUsers(this.currentPage)
-
-      .pipe(takeUntil(this.destroySub$)).subscribe((res) => {
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
         this.users$ = res.data;
         this.items = res.items;
       });
   }
 
   handlePageEvent($event: PageEvent) {
-    this.userService.getAllUsers($event.pageIndex + 1).pipe(takeUntil(this.destroySub$)).subscribe((res) => {
-      this.users$ = res.data;
-    });
-  }
-  ngOnDestroy(): void {
-    this.destroySub$.next(null),
-    this.destroySub$.complete();
+    this.usersService
+      .getAllUsers($event.pageIndex + 1)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
+        this.users$ = res.data;
+      });
   }
 }

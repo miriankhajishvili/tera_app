@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Project is about user Management Dashboard where you can rule users info. A user can have only two roles: User and Admin. 
 
-
+For login as ADMIN please use - Emai: admin@admin Password:Admin123 
 
 - The project includes an authorization/registration page that has its own validations and obligation to fill in mandatory fields. Angular reactive forms is used for user authentication/registration.
 
@@ -18,7 +18,7 @@ Project is about user Management Dashboard where you can rule users info. A user
 5) Angular Router is used to navigate between pages.which is also loaded as a lazy load.
 6) To manage asynchronous information, the RxJs library is used.
 7) Guards are also used. which ensures user rights. For example if you don't have admin assigned you won't be able to delete or edit a user.
-8) It is not possible to create a user with the role of admin through registration. For this, the admin email and password are prepared in advance. Email: Admin@admin and Password: Admin123
+8) It is not possible to create a user with the role of admin through registration. For this, the admin email and password are prepared in advance. Email: admin@admin and Password: Admin123
 9) Angular HttpClient is used to interact with the back server. (JSON Server)
 10) For every successful or unsuccessful operation, a corresponding note is displayed, so that the customer can understand whether he made a mistake or not, or vice versa.
 

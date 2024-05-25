@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, DestroyRef, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,8 @@ import { UsersService } from '../../../shared/services/users.service';
 import { IUsers } from '../../../shared/interfaces/users.interface';
 import { NgToastService } from 'ng-angular-popup';
 import { Subject, takeUntil } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 
 @Component({
   selector: 'app-log-in',
@@ -37,19 +39,9 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss',
 })
-export class LogInComponent implements OnDestroy {
-  errorMsg!: string;
-
-  destroySub$ = new Subject<void>();
-
-  hide = true;
-  get getEmail() {
-    return this.form.get('email');
-  }
-
-  get getPassword() {
-    return this.form.get('password');
-  }
+export class LogInComponent implements OnInit {
+  destroyRef: DestroyRef = inject(DestroyRef);
+  hide:boolean = true;
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -60,40 +52,52 @@ export class LogInComponent implements OnDestroy {
     ]),
   });
 
+  get getEmail() {
+    return this.form.get('email');
+  }
+
+  get getPassword() {
+    return this.form.get('password');
+  }
+
   constructor(
-    private userService: UsersService,
+    private usersService: UsersService,
     private router: Router,
     private ngToastService: NgToastService
   ) {}
 
-  submit() {
-    this.userService.getAllUsersForAuth().pipe(takeUntil(this.destroySub$)).subscribe((res) => {
-      const user = res.find((user: IUsers) => {
-        return (
-          user.email === this.form.value.email &&
-          user.password === this.form.value.password
-        );
-      });
-      if (user) {
-        localStorage.setItem('Name', user.firstname + ' ' + user.lastname);
-        localStorage.setItem('Role', user.role);
-        this.ngToastService.success({
-          detail: 'Success Message',
-          summary: 'User logged in successfully',
-        });
-        this.form.reset();
-        this.router.navigate(['/users-list']);
-      } else {
-        this.ngToastService.error({
-          detail: 'Error Message',
-          summary: 'Email or Password is wrong',
-        });
-      }
-    });
+  ngOnInit(): void {
+    
   }
 
-  ngOnDestroy(): void {
-    this.destroySub$.next()
-    this.destroySub$.complete()
+  submit() {
+    this.usersService
+      .getAllUsersForAuth()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
+        const user = res.find((user: IUsers) => {
+          return (
+            user.email === this.form.value.email &&
+            user.password === this.form.value.password
+          );
+        });
+        if (user) {
+          localStorage.setItem('Name', user.firstname + ' ' + user.lastname);
+          localStorage.setItem('Role', user.role);
+          this.ngToastService.success({
+            detail: 'Success Message',
+            summary: 'User logged in successfully',
+          });
+          this.form.reset();
+          this.router.navigate(['/users-list']);
+        } else {
+          this.ngToastService.error({
+            detail: 'Error Message',
+            summary: 'Email or Password is wrong',
+          });
+        }
+      });
   }
+
+
 }

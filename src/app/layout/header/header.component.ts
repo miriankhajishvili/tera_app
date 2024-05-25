@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -23,17 +23,16 @@ import { LogOutDialogComponent } from '../../shared/components/log-out-dialog/lo
     MatButtonModule,
     MatDividerModule,
     MatDialogModule,
-    
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-
-
-  localData = localStorage.getItem('Name');
+export class HeaderComponent implements OnInit {
+  localData: string | null = localStorage.getItem('Name');
 
   constructor(public dialog: MatDialog) {}
+
+  ngOnInit(): void {}
 
   openDialog(
     enterAnimationDuration: string,

@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { UsersService } from '../../shared/services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -8,20 +14,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { DeleteConfirmDialogComponent } from '../../shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
 import { Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-users-detail',
   standalone: true,
-  imports: [CommonModule,MatButtonModule, MatDialogModule],
+  imports: [CommonModule, MatButtonModule, MatDialogModule],
   templateUrl: './users-detail.component.html',
   styleUrl: './users-detail.component.scss',
 })
-export class UsersDetailComponent implements OnInit, OnDestroy {
-
-  destroySub$ = new Subject<void>();
-  curentUser?: IUsers;
-  localData = localStorage.getItem('Role')
-
+export class UsersDetailComponent implements OnInit {
+  destroyRef: DestroyRef = inject(DestroyRef);
+  localData: string | null = localStorage.getItem('Role');
+  curentUser!: IUsers;
 
   constructor(
     private usersService: UsersService,
@@ -37,7 +42,8 @@ export class UsersDetailComponent implements OnInit, OnDestroy {
   getCurrentUser() {
     this.usersService
       .getCurrentUser(this.activatedRoute.snapshot.params['id'])
-      .pipe(takeUntil(this.destroySub$)).subscribe((res) => (this.curentUser = res));
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => (this.curentUser = res));
   }
   openDialog(
     enterAnimationDuration: string,
@@ -57,10 +63,5 @@ export class UsersDetailComponent implements OnInit, OnDestroy {
   onEditClick() {
     this.usersService.editSub$.next(this.curentUser);
     this.router.navigate(['/edit-user', this.curentUser!.id]);
-  }
-  ngOnDestroy(): void {
-    this.destroySub$.next(),
-    this.destroySub$.complete();
-    
   }
 }

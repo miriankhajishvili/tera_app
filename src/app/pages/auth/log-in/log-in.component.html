@@ -46,23 +46,14 @@
 
               @if (getPassword?.errors?.['required']) {<mat-error
                 >Password is required</mat-error
-              >}
-
-               @if (getPassword?.errors?.['minlength']) {
+              >} @if (getPassword?.errors?.['minlength']) {
               <mat-error
                 >Password minlength must be at least 4 characters</mat-error
-              >} 
-              
-              @if (getPassword?.errors?.['maxlength']) {
+              >} @if (getPassword?.errors?.['maxlength']) {
               <mat-error
                 >Password minlength must be less than 15 characters</mat-error
               >}
-              
             </mat-form-field>
-
-            <div>
-              <mat-error>{{ errorMsg }}</mat-error>
-            </div>
 
             <button mat-raised-button color="primary" class="login-button">
               Sign In

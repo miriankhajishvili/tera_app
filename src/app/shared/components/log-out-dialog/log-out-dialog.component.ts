@@ -22,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogContent,
     MatDialogTitle,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './log-out-dialog.component.html',
   styleUrl: './log-out-dialog.component.scss',
@@ -37,7 +37,7 @@ export class LogOutDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   onYesClick() {
-    localStorage.clear()
+    localStorage.clear();
     this.ngToastService.success({
       detail: 'Success Message',
       summary: 'User logged out successfully',

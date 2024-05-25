@@ -1,8 +1,9 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 
 export const editPermissionGuard: CanActivateFn = (route, state) => {
+  
   const localData = localStorage.getItem('Role');
   const ngToastService = inject(NgToastService);
   if (localData !== 'Admin') {
@@ -15,4 +16,3 @@ export const editPermissionGuard: CanActivateFn = (route, state) => {
 
   return true;
 };
-

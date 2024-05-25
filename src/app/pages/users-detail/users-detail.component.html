@@ -1,101 +1,94 @@
-<div class="container" style="display: flex; justify-content: center;">
-
- 
-
-      <div  class="col-md-8">
-        <div style="  margin-top: 100px" class="card mb-3">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <h3 class="mb-0">Full Name</h3>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                <span
-                  >{{ curentUser?.firstname }} {{ curentUser?.lastname }}</span
-                >
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <h3 class="mb-0">Email</h3>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                <span>{{ curentUser?.email }}</span>
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <h3 class="mb-0">Role</h3>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                <span>{{ curentUser?.role }}</span>
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <h3 class="mb-0">Mobile Number</h3>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                <span>+995 595 10 20 30</span>
-              </div>
-            </div>
-            <hr />
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <h3 class="mb-0">Current Address</h3>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                <span>Sister Ishkhnelebis str 90</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-3">
-                <h3 class="mb-0">Current City</h3>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                <span>Tbilisi</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-3">
-                <h3 class="mb-0">Current Country</h3>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                <span>Georgia</span>
-              </div>
-            </div>
-
-            <hr />
-
-            <div>
-              <button
-                (click)="onEditClick()"
-                style="background-color: rgb(213, 195, 77)"
-                mat-flat-button
-                color="accent"
-              >
-                Edit Profile
-              </button>
-
-              @if (localData ==='Admin') {
-              <button
-                type="button"
-                (click)="openDialog('0ms', '0ms')"
-                style="margin-left: 10px"
-                mat-flat-button
-                color="warn"
-              >
-                Delete User
-              </button>
-              }
-            </div>
+<div class="container" style="display: flex; justify-content: center">
+  <div class="col-md-8">
+    <div style="margin-top: 100px" class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="mb-0">Full Name</h3>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <span>{{ curentUser?.firstname }} {{ curentUser?.lastname }}</span>
           </div>
         </div>
-      </div>
- 
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="mb-0">Email</h3>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <span>{{ curentUser?.email }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="mb-0">Role</h3>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <span>{{ curentUser?.role }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="mb-0">Mobile Number</h3>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <span>+995 595 10 20 30</span>
+          </div>
+        </div>
+        <hr />
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="mb-0">Current Address</h3>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <span>Sister Ishkhnelebis str 90</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="mb-0">Current City</h3>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <span>Tbilisi</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="mb-0">Current Country</h3>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <span>Georgia</span>
+          </div>
+        </div>
 
+        <hr />
+
+        <div>
+          <button
+            (click)="onEditClick()"
+            style="background-color: rgb(213, 195, 77)"
+            mat-flat-button
+            color="accent"
+          >
+            Edit Profile
+          </button>
+
+          @if (localData ==='Admin') {
+          <button
+            type="button"
+            (click)="openDialog('0ms', '0ms')"
+            style="margin-left: 10px"
+            mat-flat-button
+            color="warn"
+          >
+            Delete User
+          </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

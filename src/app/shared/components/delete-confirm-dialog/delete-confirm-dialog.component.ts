@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialogActions,
@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { Subject, concatMap, switchMap, takeUntil } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-delete-confirm-dialog',
@@ -28,8 +29,9 @@ import { NgToastService } from 'ng-angular-popup';
   templateUrl: './delete-confirm-dialog.component.html',
   styleUrl: './delete-confirm-dialog.component.scss',
 })
-export class DeleteConfirmDialogComponent implements OnInit, OnDestroy {
-  destroySub$ = new Subject<void>();
+export class DeleteConfirmDialogComponent implements OnInit {
+  destroyRef: DestroyRef = inject(DestroyRef);
+
   currentUserId!: string;
 
   constructor(
@@ -45,14 +47,14 @@ export class DeleteConfirmDialogComponent implements OnInit, OnDestroy {
 
   getCurrentUsersId() {
     this.usersService.currentUserId
-      .pipe(takeUntil(this.destroySub$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => (this.currentUserId = res));
   }
 
   onYesClick() {
     this.usersService
       .deleteUser(this.currentUserId)
-      .pipe(takeUntil(this.destroySub$))
+      // .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.ngToastService.success({
           detail: 'Success Message',
@@ -62,7 +64,5 @@ export class DeleteConfirmDialogComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
-    // this.destroySub$.next(), this.destroySub$.complete();
-  }
+
 }
