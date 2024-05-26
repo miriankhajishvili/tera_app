@@ -10,13 +10,13 @@
       "confirmPassword": "Admin123"
     },
     {
-      "id": "1001",
       "firstname": "John",
       "lastname": "Doe",
       "email": "john.doe@example.com",
       "password": "John123",
-      "role": "User",
-      "confirmPassword": "John123"
+      "role": "Admin",
+      "confirmPassword": "John123",
+      "id": "1001"
     },
     {
       "id": "1002",
@@ -369,6 +369,5 @@
       "role": "User",
       "confirmPassword": "Leo123"
     }
-  
   ]
 }

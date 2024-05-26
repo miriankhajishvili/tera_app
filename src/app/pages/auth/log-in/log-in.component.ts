@@ -82,6 +82,7 @@ export class LogInComponent implements OnInit {
           );
         });
         if (user) {
+          
           localStorage.setItem('Name', user.firstname + ' ' + user.lastname);
           localStorage.setItem('Role', user.role);
           this.ngToastService.success({
