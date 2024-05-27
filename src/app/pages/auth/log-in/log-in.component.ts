@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, OnDestroy, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,9 +23,7 @@ import { Router, RouterModule } from '@angular/router';
 import { UsersService } from '../../../shared/services/users.service';
 import { IUsers } from '../../../shared/interfaces/users.interface';
 import { NgToastService } from 'ng-angular-popup';
-import { Subject, takeUntil } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
 
 @Component({
   selector: 'app-log-in',
@@ -38,10 +42,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogInComponent implements OnInit {
   destroyRef: DestroyRef = inject(DestroyRef);
-  hide:boolean = true;
+  hide: boolean = true;
+  localData = localStorage.getItem('Role');
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -66,9 +72,7 @@ export class LogInComponent implements OnInit {
     private ngToastService: NgToastService
   ) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   submit() {
     this.usersService
@@ -82,7 +86,6 @@ export class LogInComponent implements OnInit {
           );
         });
         if (user) {
-          
           localStorage.setItem('Name', user.firstname + ' ' + user.lastname);
           localStorage.setItem('Role', user.role);
           this.ngToastService.success({
@@ -99,6 +102,4 @@ export class LogInComponent implements OnInit {
         }
       });
   }
-
-
 }

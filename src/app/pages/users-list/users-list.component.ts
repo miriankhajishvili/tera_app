@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  DestroyRef,
-  OnDestroy,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import {
   MatPaginator,
   MatPaginatorModule,
@@ -18,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { IUsers } from '../../shared/interfaces/users.interface';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../layout/header/header.component';
-import { Subject, takeUntil } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

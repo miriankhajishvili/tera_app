@@ -1,31 +1,22 @@
 {
   "users": [
     {
-      "id": "5e80",
-      "firstname": "Admin",
+      "firstname": "Super",
       "lastname": "Admin",
       "email": "admin@admin",
       "password": "Admin123",
       "role": "Admin",
-      "confirmPassword": "Admin123"
+      "confirmPassword": "Admin123",
+      "id": "5e80"
     },
     {
-      "firstname": "John",
-      "lastname": "Doe",
-      "email": "john.doe@example.com",
-      "password": "John123",
-      "role": "Admin",
-      "confirmPassword": "John123",
-      "id": "1001"
-    },
-    {
-      "id": "1002",
       "firstname": "Jane",
       "lastname": "Smith",
       "email": "jane.smith@example.com",
       "password": "Jane123",
       "role": "User",
-      "confirmPassword": "Jane123"
+      "confirmPassword": "Jane123",
+      "id": "1002"
     },
     {
       "id": "1003",

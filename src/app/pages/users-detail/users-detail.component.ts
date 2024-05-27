@@ -1,10 +1,4 @@
-import {
-  Component,
-  DestroyRef,
-  OnDestroy,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { UsersService } from '../../shared/services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -12,7 +6,6 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { IUsers } from '../../shared/interfaces/users.interface';
 import { MatButtonModule } from '@angular/material/button';
 import { DeleteConfirmDialogComponent } from '../../shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
-import { Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 

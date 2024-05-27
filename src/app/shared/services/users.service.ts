@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IData, IUsers } from '../interfaces/users.interface';
 
 @Injectable({
@@ -26,7 +26,7 @@ export class UsersService extends BaseService {
     return this.get<IUsers[]>('users');
   }
 
-  regiterUser(newUser: IUsers): Observable<IUsers> {
+  registerUsers(newUser: IUsers): Observable<IUsers> {
     return this.post<IUsers>('users', newUser);
   }
 

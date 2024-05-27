@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  OnDestroy,
   OnInit,
   inject,
 } from '@angular/core';
@@ -23,7 +23,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PasswordValidate } from '../../../core/validators/password.validators';
 import { UsersService } from '../../../shared/services/users.service';
 import { NgToastService } from 'ng-angular-popup';
-import { Subject, takeUntil } from 'rxjs';
 import { MatRadioModule } from '@angular/material/radio';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -45,6 +44,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
   destroyRef: DestroyRef = inject(DestroyRef);
@@ -125,10 +125,9 @@ export class RegisterComponent implements OnInit {
 
             this.router.navigate(['/users-list']);
           });
-        this.form.reset();
       } else {
         this.usersService
-          .regiterUser(this.form.value)
+          .registerUsers(this.form.value)
           .pipe(takeUntilDestroyed(this.destroyRef))
           .subscribe({
             next: (res) => {
